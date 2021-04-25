@@ -53,9 +53,13 @@ class MySaveFileThread(threading.Thread):
         for folder_id in folder_ids:
             destination_path = folder_ids[folder_id]
 
+            rclone_copy_type = 'copy'
+            if os.getenv("RCLONE_SYNC").lower() == "true" or config.RCLONE_SYNC.lower() == "true":
+                rclone_copy_type = 'sync'
+
             command_line = [
                 config.PATH_TO_GCLONE,
-                'copy',
+                rclone_copy_type,
                 '--drive-server-side-across-configs',
                 '-P',
                 '--stats',
