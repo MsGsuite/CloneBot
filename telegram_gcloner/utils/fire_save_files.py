@@ -62,7 +62,7 @@ class MySaveFileThread(threading.Thread):
                 '1s',
                 '--ignore-existing'
             ]
-            if os.getenv("RCLONE_SYNC").lower() == "true" or config.RCLONE_SYNC.lower() == "true":
+            if os.getenv('RCLONE_SYNC').lower() == 'true' or config.RCLONE_SYNC.lower() == 'true':
                 command_line = [
                     config.PATH_TO_GCLONE,
                     'sync',
