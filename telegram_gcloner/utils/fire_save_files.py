@@ -53,19 +53,24 @@ class MySaveFileThread(threading.Thread):
         for folder_id in folder_ids:
             destination_path = folder_ids[folder_id]
 
-            rclone_copy_type = 'copy'
-            if os.getenv("RCLONE_SYNC").lower() == "true" or config.RCLONE_SYNC.lower() == "true":
-                rclone_copy_type = 'sync'
-
             command_line = [
                 config.PATH_TO_GCLONE,
-                rclone_copy_type,
+                'copy',
                 '--drive-server-side-across-configs',
                 '-P',
                 '--stats',
                 '1s',
                 '--ignore-existing'
             ]
+            if os.getenv("RCLONE_SYNC").lower() == "true" or config.RCLONE_SYNC.lower() == "true":
+                command_line = [
+                    config.PATH_TO_GCLONE,
+                    'sync',
+                    '--drive-server-side-across-configs',
+                    '-P',
+                    '--stats',
+                    '1s'
+                ]
             if config.GCLONE_PARA_OVERRIDE:
                 command_line.extend(config.GCLONE_PARA_OVERRIDE)
             elif is_fclone is True:
