@@ -62,15 +62,26 @@ class MySaveFileThread(threading.Thread):
                 '1s',
                 '--ignore-existing'
             ]
-            if os.getenv('RCLONE_SYNC').lower() == 'true' or config.RCLONE_SYNC.lower() == 'true':
-                command_line = [
-                    config.PATH_TO_GCLONE,
-                    'sync',
-                    '--drive-server-side-across-configs',
-                    '-P',
-                    '--stats',
-                    '1s'
-                ]
+            if os.getenv('RCLONE_SYNC'):
+                if os.getenv('RCLONE_SYNC').lower() == 'true':
+                    command_line = [
+                        config.PATH_TO_GCLONE,
+                        'sync',
+                        '--drive-server-side-across-configs',
+                        '-P',
+                        '--stats',
+                        '1s'
+                    ]
+            elif config.RCLONE_SYNC:
+                if config.RCLONE_SYNC.lower() == 'true':
+                    command_line = [
+                        config.PATH_TO_GCLONE,
+                        'sync',
+                        '--drive-server-side-across-configs',
+                        '-P',
+                        '--stats',
+                        '1s'
+                    ]
             if config.GCLONE_PARA_OVERRIDE:
                 command_line.extend(config.GCLONE_PARA_OVERRIDE)
             elif is_fclone is True:

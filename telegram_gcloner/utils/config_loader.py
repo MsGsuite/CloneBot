@@ -23,6 +23,7 @@ class _Config:
         self._base_path = os.path.dirname(os.path.dirname(__file__))
         self.TIMER_TO_DELETE_MESSAGE = 10
         self.AD_STRING = ' Goodbye, please talk to the bot<a href="{}"> privately.</a>'
+        self._rclone_sync = None
 
     def load_config(self):
         logger.debug('Loading config')
@@ -46,6 +47,7 @@ class _Config:
             'telegram_token',
             'user_ids',
             'group_ids',
+            'rclone_sync',
         ]
 
         self.get_config_from_section('str', config_general_keywords_str, config_general)
@@ -115,6 +117,10 @@ class _Config:
     @property
     def LOG_FILE(self):
         return self._log_file
+        
+    @property
+    def RCLONE_SYNC(self):
+        return self._rclone_sync
 
     @LOG_FILE.setter
     def LOG_FILE(self, val):
