@@ -4,17 +4,17 @@
 	"repository": "https://github.com/MsGsuite/CloneBot",
 	"keywords": ["Gclone","TG"],
 	"env": {
-		"BOT_TOKEN": {
-			"description": "Get from Telegram Botfather"
+		"telegram_token": {
+			"description": "Get from Telegram @Botfather."
 		},
-		"USER_ID": {
-			"description": "get from telegram get_id_bot. For More than 1 User Give IDs seperated by ','.The First Guy is the Admin"
+		"user_ids": {
+			"description": "Your user id. (If you want to add more than 1 User, give IDs seperated by ',').The First user is the Admin"
 		},
-		"GRP_ID": {
-			"description": "Create a Super Group(s) and add ID Here (if More than 1 group Give IDs seperated by ','"
+		"group_ids": {
+			"description": "Create a Super Group(s) and add ID Here. Add -1 if you don't want to add a group.(If More than 1 group Give IDs seperated by ',')"
 		},
-		"GC_PARA_OVERRIDE": {
-			"description": "Leave this if u Dont Know",
+		"gclone_para_override": {
+			"description": "Leave this if you don't know how to use it",
 			"required": false
 		},
 		"RCLONE_SYNC": {
