@@ -16,6 +16,10 @@
 		"GC_PARA_OVERRIDE": {
 			"description": "Leave this if u Dont Know",
 			"required": false
+		},
+		"RCLONE_SYNC": {
+			"description": "Leave this if u Dont Know",
+			"required": false
 		}
 	},
     	"stack": "container"
